@@ -42,10 +42,10 @@ class RelationManager:
                                'group2subscribers': self.__group_id2subscribers}
             json.dump(save, file, ensure_ascii=False, indent=2)
 
-    def is_superuser(self, userid: Union[int, str]) -> bool:
+    def is_staff(self, userid: Union[int, str]) -> bool:
         return int(userid) in self.__staff_id2group_list.keys()
 
-    def get_superuser_groups(self, userid: Union[int, str]) -> List[int]:
+    def get_staff_groups(self, userid: Union[int, str]) -> List[int]:
         if self.is_superuser(userid):
             return self.__staff_id2group_list[int(userid)]
         else:
